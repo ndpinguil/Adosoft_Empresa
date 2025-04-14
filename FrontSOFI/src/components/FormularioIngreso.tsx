@@ -1,56 +1,119 @@
 import React, { useState } from 'react';
-import supabase from '../supabaseClient';  // Asegúrate de importar correctamente el cliente de Supabase
+import supabase from '../supabaseClient';
 
-    const FormularioIngreso = () => {
-    const [nombre, setNombre] = useState('');
-    const [email, setEmail] = useState('');
+const FormularioIngreso = () => {
+const [formData, setFormData] = useState({
+    empresa: '',
+    proceso: '',
+    os: '',
+    procesador: '',
+    nucleos: '',
+    beneli: ''
+});
 
-    const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault();
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+        setFormData((prev) => ({
+        ...prev,
+        [name]: value
+    }));
+};
 
-        // Enviar los datos a la base de datos Supabase
-        const { data, error } = await supabase
-        .from('usuarios')  // Aquí usa el nombre de tu tabla en Supabase
-        .insert([
-            {
-            nombre: nombre,
-            email: email
-            }
-        ]);
+const handleSubmit = async (e: React.FormEvent) => {
+e.preventDefault();
 
-        if (error) {
-        console.error('Error al ingresar los datos:', error);
-        } else {
-        console.log('Datos ingresados con éxito:', data);
-        // Limpiar el formulario después de un ingreso exitoso
-        setNombre('');
-        setEmail('');
-        }
-    };
+console.log('Datos a insertar:', formData);
 
-    return (
-        <form onSubmit={handleSubmit}>
+const { error } = await supabase.from('equipos').insert([
+    {
+        ...formData,
+        procesador: Number(formData.procesador),
+        nucleos: Number(formData.nucleos)
+    }
+]);
+
+if (error) {
+    alert('❌ Error al insertar: ' + error.message);
+    console.error(error);
+} else {
+    alert('✅ Registro guardado');
+        setFormData({
+            empresa: '',
+            proceso: '',
+            os: '',
+            procesador: '',
+            nucleos: '',
+            beneli: ''
+        });
+    }
+};
+
+return (
+    <form onSubmit={handleSubmit}>
         <div>
-            <label>Nombre:</label>
+            <label>Empresa:</label>
             <input
             type="text"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            name="empresa"
+            value={formData.empresa}
+            onChange={handleChange}
             required
             />
         </div>
+
         <div>
-            <label>Email:</label>
+            <label>Proceso:</label>
             <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            type="text"
+            name="proceso"
+            value={formData.proceso}
+            onChange={handleChange}
             />
         </div>
-        <button type="submit">Enviar</button>
+
+        <div>
+            <label>Sistema Operativo:</label>
+            <input
+            type="text"
+            name="os"
+            value={formData.os}
+            onChange={handleChange}
+            />
+        </div>
+
+        <div>
+            <label>Procesador:</label>
+            <input
+            type="number"
+            name="procesador"
+            value={formData.procesador}
+            onChange={handleChange}
+            />
+        </div>
+
+        <div>
+            <label>Núcleos:</label>
+            <input
+            type="number"
+            name="nucleos"
+            value={formData.nucleos}
+            onChange={handleChange}
+            />
+        </div>
+
+        <div>
+            <label>Beneli:</label>
+            <input
+            type="text"
+            name="beneli"
+            value={formData.beneli}
+            onChange={handleChange}
+            />
+        </div>
+
+        <button type="submit">Guardar</button>
         </form>
     );
-    };
+};
 
 export default FormularioIngreso;

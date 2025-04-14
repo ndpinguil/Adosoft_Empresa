@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import supabase from './supabaseClient';
+import BuscarEmpresa from './components/BuscarEmpresa';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ function App() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { error } = await supabase.from('CPU').insert([{
+    const { error } = await supabase.from('equipos').insert([{
       ...formData,
       procesador: Number(formData.procesador),
       nucleos: Number(formData.nucleos)
@@ -57,6 +58,11 @@ function App() {
         ))}
         <button type="submit">Guardar</button>
       </form>
+
+      <hr style={{ margin: '2rem 0' }} />
+
+      <h2>Buscar empresa</h2>
+      <BuscarEmpresa />
     </div>
   );
 }
