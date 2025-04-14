@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./FrontSOFI  # Proyecto de React
+    container_name: container_frontend
+    ports:
+      - "5173:80"
+    networks:
+      - app_network
+
+networks:
+  app_network:
