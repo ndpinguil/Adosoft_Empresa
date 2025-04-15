@@ -1,6 +1,14 @@
+<header className="encabezado">
+  <div className="logo">
+    <img src="/logo-adosoft.svg" alt="ADOSOFT Logo" className="logo-img" />
+    <span className="logo-text">ADOSOFT</span>
+  </div>
+</header>
+
 import { useState } from 'react';
 import supabase from './supabaseClient';
-import BuscarEmpresa from './components/BuscarEmpresa';
+import BuscarEmpresa from './pages/BuscarEmpresa';
+import './App.css'; // aquí estarán los estilos
 
 function App() {
   const [formData, setFormData] = useState({
@@ -41,28 +49,31 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Registrar equipo</h2>
-      <form onSubmit={handleSubmit}>
-        {['empresa', 'proceso', 'os', 'procesador', 'nucleos', 'beneli'].map((field) => (
-          <div key={field}>
-            <label>{field}: </label>
-            <input
-              type="text"
-              name={field}
-              value={(formData as any)[field]}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        ))}
-        <button type="submit">Guardar</button>
-      </form>
+    <div className="app-container">
+      <header className="app-header">ADOSOFT</header>
 
-      <hr style={{ margin: '2rem 0' }} />
+      <section className="buscar-section">
+        <BuscarEmpresa />
+      </section>
 
-      <h2>Buscar empresa</h2>
-      <BuscarEmpresa />
+      <section className="form-section">
+        <h2>Registrar equipo</h2>
+        <form onSubmit={handleSubmit}>
+          {['empresa', 'proceso', 'os', 'procesador', 'nucleos', 'beneli'].map((field) => (
+            <div key={field} className="input-group">
+              <label>{field}:</label>
+              <input
+                type="text"
+                name={field}
+                value={(formData as any)[field]}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ))}
+          <button type="submit" className="submit-button">Guardar</button>
+        </form>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,54 @@
+.buscar-container {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.buscar-input {
+width: 100%;
+padding: 0.5rem;
+margin-bottom: 1rem;
+font-size: 1rem;
+}
+
+.resultados-grid {
+display: grid;
+gap: 1rem;
+}
+
+.resultado-card {
+background: white;
+padding: 1rem;
+border-radius: 0.5rem;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.resultado-card button {
+margin-right: 0.5rem;
+padding: 0.3rem 0.6rem;
+font-size: 1rem;
+}
+
+.tabla-elegante {
+width: 100%;
+border-collapse: collapse;
+margin-top: 1rem;
+background-color: white;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+border-radius: 0.5rem;
+overflow: hidden;
+}
+
+.tabla-elegante th,
+.tabla-elegante td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid #e2e8f0;
+}
+
+.tabla-elegante thead {
+background-color: #f1f5f9;
+}
+
+.tabla-elegante tbody tr:hover {
+background-color: #f9fafb;
+}
