@@ -96,12 +96,12 @@ const FormularioIngreso: React.FC = () => {
     <div style={{ padding: '1rem' }}>
       <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
         <h2>Registro de Equipos</h2>
-        <div><label>Empresa:</label><input name="empresa" value={formData.empresa} onChange={handleChange} required /></div>
-        <div><label>Proceso:</label><input name="proceso" value={formData.proceso || ''} onChange={handleChange} /></div>
-        <div><label>Sistema Operativo:</label><input name="os" value={formData.os} onChange={handleChange} required /></div>
-        <div><label>Procesador:</label><input name="procesador" type="number" value={formData.procesador} onChange={handleChange} required /></div>
-        <div><label>Núcleos:</label><input name="nucleos" type="number" value={formData.nucleos} onChange={handleChange} required /></div>
-        <div><label>Beneli:</label><input name="beneli" value={formData.beneli || ''} onChange={handleChange} /></div>
+        <div><label>Empresa:</label><input name="EMPRESA" value={formData.empresa} onChange={handleChange} required /></div>
+        <div><label>Proceso:</label><input name="VELOCIDAD" value={formData.proceso || ''} onChange={handleChange} /></div>
+        <div><label>Sistema Operativo:</label><input name="SISTEMA OPERATIVO" value={formData.os} onChange={handleChange} required /></div>
+        <div><label>Procesador:</label><input name="PROCESADOR" type="number" value={formData.procesador} onChange={handleChange} required /></div>
+        <div><label>Núcleos:</label><input name="NUCLEOS" type="number" value={formData.nucleos} onChange={handleChange} required /></div>
+        <div><label>Beneli:</label><input name="BENCH" value={formData.beneli || ''} onChange={handleChange} /></div>
         <button type="submit">Guardar</button>
       </form>
 
