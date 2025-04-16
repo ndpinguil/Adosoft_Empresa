@@ -1,14 +1,7 @@
-<header className="encabezado">
-  <div className="logo">
-    <img src="/logo-adosoft.svg" alt="ADOSOFT Logo" className="logo-img" />
-    <span className="logo-text">ADOSOFT</span>
-  </div>
-</header>
-
 import { useState } from 'react';
 import supabase from './supabaseClient';
 import BuscarEmpresa from './pages/BuscarEmpresa';
-import './App.css'; // aquí estarán los estilos
+import './App.css';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -50,30 +43,37 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="app-header">ADOSOFT</header>
+      <header className="barra-header fade-in">
+        <div className="texto-header">
+          <span className="logo-text">ADOSOFT</span>
+          <span className="logo-subtext">Sistema de Registro Empresarial</span>
+        </div>
+      </header>
 
-      <section className="buscar-section">
-        <BuscarEmpresa />
-      </section>
+      <main className="contenido-principal">
+        <section className="lado-izquierdo">
+          <BuscarEmpresa />
+        </section>
 
-      <section className="form-section">
-        <h2>Registrar equipo</h2>
-        <form onSubmit={handleSubmit}>
-          {['empresa', 'proceso', 'os', 'procesador', 'nucleos', 'beneli'].map((field) => (
-            <div key={field} className="input-group">
-              <label>{field}:</label>
-              <input
-                type="text"
-                name={field}
-                value={(formData as any)[field]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          ))}
-          <button type="submit" className="submit-button">Guardar</button>
-        </form>
-      </section>
+        <section className="lado-derecho">
+          <h2>Registrar equipo</h2>
+          <form onSubmit={handleSubmit}>
+            {['empresa', 'proceso', 'os', 'procesador', 'nucleos', 'beneli'].map((field) => (
+              <div key={field} className="input-group">
+                <label>{field}:</label>
+                <input
+                  type="text"
+                  name={field}
+                  value={(formData as any)[field]}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            ))}
+            <button type="submit" className="submit-button">Guardar</button>
+          </form>
+        </section>
+      </main>
     </div>
   );
 }
