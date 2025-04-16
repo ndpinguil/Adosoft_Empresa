@@ -31,10 +31,13 @@ const BuscarEmpresa = () => {
       .ilike('empresa', `%${empresa}%`);
 
     if (error) {
+      console.error('❌ Error al buscar:', error);
       alert('❌ Error al buscar: ' + error.message);
     } else {
+      console.log('✅ Resultados obtenidos:', data);
       setResultados(data as Equipo[] || []);
     }
+
     setCargando(false);
   };
 
@@ -52,7 +55,7 @@ const BuscarEmpresa = () => {
       alert('❌ Error al eliminar: ' + error.message);
     } else {
       alert('✅ Registro eliminado');
-      setResultados(resultados.filter((r) => r.id !== id));
+      setResultados((prev) => prev.filter((r) => r.id !== id));
     }
   };
 

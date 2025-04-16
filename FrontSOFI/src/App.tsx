@@ -45,7 +45,7 @@ function App() {
     <div className="app-container">
       <header className="barra-header fade-in">
         <div className="texto-header">
-          <span className="logo-text">ADOSOFT</span>
+          <span className="logo-tefxt">ADOSOFT</span>
           <span className="logo-subtext">Sistema de Registro Empresarial</span>
         </div>
       </header>
@@ -56,13 +56,14 @@ function App() {
         </section>
 
         <section className="lado-derecho">
-          <h2>Registrar equipo</h2>
+          <h2>📝 Registrar equipo</h2>
           <form onSubmit={handleSubmit}>
             {['empresa', 'proceso', 'os', 'procesador', 'nucleos', 'beneli'].map((field) => (
               <div key={field} className="input-group">
-                <label>{field}:</label>
+                <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
                 <input
-                  type="text"
+                  id={field}
+                  type={field === 'procesador' || field === 'nucleos' ? 'number' : 'text'}
                   name={field}
                   value={(formData as any)[field]}
                   onChange={handleChange}
@@ -70,7 +71,7 @@ function App() {
                 />
               </div>
             ))}
-            <button type="submit" className="submit-button">Guardar</button>
+            <button type="submit" className="submit-button">💾 Guardar</button>
           </form>
         </section>
       </main>

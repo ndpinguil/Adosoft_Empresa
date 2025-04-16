@@ -1,73 +1,125 @@
     /* FormularioEdicion.css */
 
-    form {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        margin: 0 auto;
+form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+h3 {
+    text-align: center;
+    color: #333;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button[type="button"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"]:hover {
+    background-color: #ddd;
+}
+
+p {
+    color: rgb(50, 6, 104);
+    font-size: 12px;
+}
+.buscar-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+.buscar-input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+.tabla-elegante {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.tabla-elegante th,
+.tabla-elegante td {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.tabla-elegante th {
+    background-color: #003366;
+    color: white;
+}
+.tabla-elegante tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.tabla-elegante tr:hover {
+    background-color: #edf2f7;
     }
     
-    h3 {
-        text-align: center;
-        color: #333;
-    }
-    
-    div {
-        margin-bottom: 15px;
-    }
-    
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #555;
-    }
-    
-    input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        color: #333;
-        transition: border-color 0.3s;
-    }
-    
-    input:focus {
-        border-color: #007bff;
-        outline: none;
-    }
-    
-    button {
-        width: 100%;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 10px;
-    }
-    
-    button[type="button"] {
-        background-color: #f0f0f0;
-        color: #333;
-    }
-    
-    button:hover {
-        background-color: #0056b3;
-    }
-    
-    button[type="button"]:hover {
-        background-color: #ddd;
-    }
-    
-    p {
-        color: red;
-        font-size: 12px;
-    }
-    
+.tabla-elegante button {
+    margin-right: 0.5rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tabla-elegante button:hover {
+    transform: scale(1.2);
+}
